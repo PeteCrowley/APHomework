@@ -1,6 +1,6 @@
 import java.util.Scanner;
 /**
- * Class HolyGrail takes some input and prints at some info based on that input.
+ * Class HolyGrail takes some input from questions and prints out some info based on that input.
  * @version 09/15/21
  * @author 23crowley
  */

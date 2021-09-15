@@ -23,6 +23,43 @@ public class SimpleIOMath{
         }
         return true;
     }
+    // Generation Years according to this website: https://www.beresfordresearch.com/age-range-by-generation/
+    /**
+     * Gets the generation of user based on their age
+     * @param age the age of the user
+     * @return the generation of the user based on the age
+     */
+    public static String getGeneration(int age){
+        String generation;
+        if (age > 98){
+            generation = "Very very old";
+        }
+        else if (age > 93){
+            generation = "WWII";
+        }
+        else if (age > 75){
+            generation = "Post War";
+        }
+        else if (age > 66){
+            generation = "Boomers I";
+        }
+        else if (age > 56){
+            generation = "Boomers II";
+        }
+        else if (age > 40){
+            generation = "Gen X";
+        }
+        else if (age > 24){
+            generation = "Millennial";
+        }
+        else if (age > 9){
+            generation = "Gen Z";
+        }
+        else{
+            generation = "Too Young";
+        }
+        return generation;
+    }
 
     /**
      * Finds the first prime factor of a given number.
@@ -68,6 +105,7 @@ public class SimpleIOMath{
         System.out.println(limerick);
         System.out.println("Your name is: " + name);
         System.out.println("Your age is: " + age);
+        System.out.println("Your generation is: " + getGeneration(age));
         System.out.println("At your next birthday, you will turn " + (age+1) + ".");
         System.out.println("The first prime factor of " + age + " is: " + getFirstPrime(age));
         System.out.println("Your favorite number is: " + fav_num);
@@ -85,7 +123,5 @@ public class SimpleIOMath{
         SimpleIOMath program = new SimpleIOMath();
         program.promptUser();
         program.printInfo();
-
-
     }
 }
