@@ -11,7 +11,10 @@ public class SimpleIOMath{
     private int fav_num;
     private String generation;
 
-    //Generation Years according to this website: https://www.beresfordresearch.com/age-range-by-generation/
+    /**
+     * Gets generation based on age
+     * Generation Years according to this website: https://www.beresfordresearch.com/age-range-by-generation/
+     */
     private void getGeneration(){
         if (age > 98){
             generation = "Very very old";
@@ -67,6 +70,8 @@ public class SimpleIOMath{
             catch(Exception e){
                 System.out.println("Please enter a non-zero integer.");
                 ez_scan.next();
+                // Previous line added to avoid infinite loop, help from the link below
+                // https://stackoverflow.com/questions/47852298/how-to-keep-looping-with-try-and-catch-to-get-correct-input
             }
         }
         while (fav_num == 0){
