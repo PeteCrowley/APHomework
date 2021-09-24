@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 /**
  * Class SimpleIOMath takes some string and numerical input, manipulates it and prints out the result.
+ * Extras of validating numerical input and finding the generation based on age.
  * @version 9/20/21
  * @author 23crowley
  */
