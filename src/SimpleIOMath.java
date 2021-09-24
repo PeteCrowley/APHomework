@@ -9,28 +9,10 @@ public class SimpleIOMath{
     private String name;
     private int age;
     private int fav_num;
+    private String generation;
 
-    /**
-     * Checks if a number is prime.
-     * @param num the integer that is being checked.
-     * @return true if prime, false if not prime.
-     */
-    public static boolean isPrime(int num){
-        for (int i = 2; i < num/2; i++){
-            if (num % i == 0){
-                return false;
-            }
-        }
-        return true;
-    }
-    // Generation Years according to this website: https://www.beresfordresearch.com/age-range-by-generation/
-    /**
-     * Gets the generation of user based on their age
-     * @param age the age of the user
-     * @return the generation of the user based on the age
-     */
-    public static String getGeneration(int age){
-        String generation;
+    //Generation Years according to this website: https://www.beresfordresearch.com/age-range-by-generation/
+    private void getGeneration(){
         if (age > 98){
             generation = "Very very old";
         }
@@ -58,20 +40,12 @@ public class SimpleIOMath{
         else{
             generation = "Too Young";
         }
-        return generation;
     }
 
-    /**
-     * Finds the first prime factor of a given number.
-     * @param num the integer of which you want to find the first prime factor.
-     * @return the first prime factor.
-     */
     public static int getFirstPrime(int num){
-        for (int i = 2; i < num/3; i ++){
-            if (num % i == 0){
-                if (isPrime(i)){
-                    return i;
-                }
+        for (int i = 2; i < Math.sqrt(num)+1; i++) {
+            if (num % i == 0) {
+                return i;
             }
         }
         return num;
@@ -87,10 +61,22 @@ public class SimpleIOMath{
         Scanner ez_scan = new Scanner(System.in);
         System.out.print(question1);
         name = ez_scan.nextLine();
-        System.out.print(question2);
-        age = ez_scan.nextInt();
-        System.out.print(question3);
-        fav_num = ez_scan.nextInt();
+        while (age == 0){
+            System.out.print(question2);
+            try {age = ez_scan.nextInt();}
+            catch(Exception e){
+                System.out.println("Please enter a non-zero integer.");
+                ez_scan.next();
+            }
+        }
+        while (fav_num == 0){
+            System.out.print(question3);
+            try {fav_num = ez_scan.nextInt();}
+            catch(Exception e){
+                System.out.println("Please enter a non-zero integer.");
+                ez_scan.next();
+            }
+        }
         ez_scan.close();
     }
 
@@ -98,14 +84,13 @@ public class SimpleIOMath{
      * A helper function to print out information once it has been received from the user.
      */
     public void printInfo(){
-        String limerick = """
+        System.out.println("""
                 Let me tell you what it's all about
                 Reading, writing, arithmetic
-                Are the branches of the learning tree""";
-        System.out.println(limerick);
+                Are the branches of the learning tree""");
         System.out.println("Your name is: " + name);
         System.out.println("Your age is: " + age);
-        System.out.println("Your generation is: " + getGeneration(age));
+        System.out.println("Your generation is: " + generation);
         System.out.println("At your next birthday, you will turn " + (age+1) + ".");
         System.out.println("The first prime factor of " + age + " is: " + getFirstPrime(age));
         System.out.println("Your favorite number is: " + fav_num);
@@ -122,6 +107,7 @@ public class SimpleIOMath{
                 + "* All you gotta do is repeat after me *");
         SimpleIOMath program = new SimpleIOMath();
         program.promptUser();
+        program.getGeneration();
         program.printInfo();
     }
 }
