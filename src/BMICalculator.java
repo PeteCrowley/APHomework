@@ -35,7 +35,7 @@ public class BMICalculator {
         boolean running = true;
         while(running) {
             int feet = -1, inches = -1, weight = 0;
-            while (feet <= 0 || (inches <= 0 || inches > 11)) {
+            while (feet < 0 || (inches < 0 || inches > 11) || feet+inches <= 0) {
                 System.out.print("Enter your height in feet and inches (Ex 6'1\"): ");
                 String height = ez_scan.nextLine();
                 int feet_pos = height.indexOf("'");
@@ -47,7 +47,7 @@ public class BMICalculator {
                     System.out.println("Not a valid input, use the given form to enter an integer height greater than 0.");
                     continue;
                 }
-                if (feet <= 0 || inches <= 0) {
+                if (feet < 0 || inches < 0 || feet+inches <= 0) {
                     System.out.println("Enter values greater than 0.");
                 } else if (inches > 11) {
                     System.out.println("Enter a value for inches less than 12");
