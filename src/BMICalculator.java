@@ -25,7 +25,7 @@ public class BMICalculator {
      * Uses a Scanner to prompt the user for info, processes the feet/inches
      * conversion, calls the computeBMI method and prints
      * the correct information.
-     * Height inputs for 100% coverage: notanum, 6'5, -6'5", 6'13", 6'1", 0'00"
+     * Height inputs for 100% coverage: notanum, 6'5, -6'5", 6'13", 6'1", 0'0"
      * Weight inputs for 100% coverage: notanum, -15, 15
      * @param args command line arguments if needed
      */
@@ -35,7 +35,7 @@ public class BMICalculator {
         boolean running = true;
         while(running) {
             int feet = -1, inches = -1, weight = 0;
-            while (feet < 0 || (inches < 0 || inches > 11)) {
+            while (feet <= 0 || (inches <= 0 || inches > 11)) {
                 System.out.print("Enter your height in feet and inches (Ex 6'1\"): ");
                 String height = ez_scan.nextLine();
                 int feet_pos = height.indexOf("'");
@@ -44,11 +44,11 @@ public class BMICalculator {
                     feet = Integer.parseInt(height.substring(0, feet_pos));
                     inches = Integer.parseInt(height.substring(feet_pos + 1, inch_pos));
                 } catch (Exception e) {
-                    System.out.println("Not a valid input, use the given form to enter an ineger height greater than 0.");
+                    System.out.println("Not a valid input, use the given form to enter an integer height greater than 0.");
                     continue;
                 }
-                if (feet < 0 || inches < 0) {
-                    System.out.println("Enter Positive Values.");
+                if (feet <= 0 || inches <= 0) {
+                    System.out.println("Enter values greater than 0.");
                 } else if (inches > 11) {
                     System.out.println("Enter a value for inches less than 12");
                 }
