@@ -53,7 +53,6 @@ public class ScrabbleScorer {
      * @return true if the word is valid, otherwise false
      */
     public boolean isValidWord(String word){
-//        return true;
         return Collections.binarySearch(dictionary, word) >= 0;
     }
 
