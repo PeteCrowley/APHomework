@@ -41,6 +41,7 @@ public class ScrabbleScorer {
                 String word = fileReader.nextLine();
                 dictionary.add(word);
             }
+            fileReader.close();
         }catch (Exception e){
             e.printStackTrace();
         }
