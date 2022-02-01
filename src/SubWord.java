@@ -4,13 +4,13 @@
  * Example:	rootWord is "baseball"
  * 			sub words are "base" + "ball"
  * @author 23crowley
- * @version 1/26/22
+ * @version 02/01/22
  */
 
-import java.util.*;
+
 public class SubWord implements Comparable<SubWord> {
-    private String rootWord;
-    private String sub1, sub2;
+    private final String rootWord;
+    private final String sub1, sub2;
 
     /**
      * Constructor for a SubWord object.  Start by supplying the
@@ -33,6 +33,20 @@ public class SubWord implements Comparable<SubWord> {
      * @return The list of sub words
      */
     public String getSubWords()	{	return sub1 + " + " + sub2;	}
+    /**
+     * Utility accessor method
+     * @return the fist subword
+     */
+    public String getSub1(){
+        return sub1;
+    }
+    /**
+     * Utility accessor method
+     * @return the second subword
+     */
+    public String getSub2(){
+        return sub2;
+    }
 
     /**
      * Compares two SubWord objects alphabetically A to Z based on rootWord
@@ -40,15 +54,13 @@ public class SubWord implements Comparable<SubWord> {
      * are equal, +int if this.rootWord is greater than other.rootWord
      */
     public int compareTo(SubWord other)	{
-        //TODO: override this invalid return statement
-        return 0;
+        return rootWord.compareTo(other.rootWord);
     }
 
     /**
      * @return This SubWord in root = sub1 + sub2 format
      */
     public String toString()	{
-        //TODO: define this method to return "rootWord = subWord1 + subWord2"
-        return "";
+        return rootWord + " = " + sub1 + " + " + sub2;
     }
 }
