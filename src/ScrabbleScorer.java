@@ -14,6 +14,7 @@ public class ScrabbleScorer {
     private final int[] points;
     private final String quitWord;
     private final String refString;
+    private File textFile;
 
     private int letterToVal(char letter){
         return points[refString.indexOf(letter)];
@@ -24,19 +25,32 @@ public class ScrabbleScorer {
      * Initializes the point values for letters and builds the dictionary of valid words
      */
     public ScrabbleScorer(){
+        textFile = new File("SCRABBLE_WORDS.txt");
         points = new int[]{1, 3, 3, 2, 1, 4, 2, 4, 1, 8, 5, 1, 3, 1, 1, 3, 10, 1, 1, 1, 1, 4, 4, 8, 4, 10};
         quitWord = "0";
         refString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         dictionary = new ArrayList<>();
         buildDictionary();
+
     }
+
+    public ScrabbleScorer(File file){
+        textFile = file;
+        points = new int[]{1, 3, 3, 2, 1, 4, 2, 4, 1, 8, 5, 1, 3, 1, 1, 3, 10, 1, 1, 1, 1, 4, 4, 8, 4, 10};
+        quitWord = "0";
+        refString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        dictionary = new ArrayList<>();
+        buildDictionary();
+
+    }
+
 
     /**
      * Builds the dictionary of valid words by reading words from the file SCRABBLE_WORDS.txt
      */
     public void buildDictionary(){
         try{
-            Scanner fileReader = new Scanner(new File("SCRABBLE_WORDS.txt"));
+            Scanner fileReader = new Scanner(textFile);
             while (fileReader.hasNextLine()){
                 String word = fileReader.nextLine();
                 dictionary.add(word);
