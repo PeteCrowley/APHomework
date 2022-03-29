@@ -60,14 +60,18 @@ public class CoinSorterMachine {
         System.out.println("Summary of Deposit: ");
         int[] coinCounter = {0, 0, 0, 0, 0, 0};
         for(Coin c: coins){
-            switch(c.getName()){
-                case "penny" -> coinCounter[0] += 1;
-                case "nickel" -> coinCounter[1] += 1;
-                case "dime" -> coinCounter[2] += 1;
-                case "quarter" -> coinCounter[3] += 1;
-                case "half dollar" -> coinCounter[4] += 1;
-                case "dollar" -> coinCounter[5] += 1;
-            }
+            if(c instanceof Penny)
+                coinCounter[0] += 1;
+            else if(c instanceof Nickel)
+                coinCounter[1] += 1;
+            else if(c instanceof Dime)
+                coinCounter[2]+= 1;
+            else if(c instanceof Quarter)
+                coinCounter[3] += 1;
+            else if(c instanceof HalfDollar)
+                coinCounter[4] += 1;
+            else
+                coinCounter[5] += 1;
         }
         Coin[] compareCoin = {new Penny(), new Nickel(), new Dime(), new Quarter(), new HalfDollar(), new Dollar()};
         for (int i = 0; i < compareCoin.length; i++) {
