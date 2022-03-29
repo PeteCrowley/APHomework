@@ -117,7 +117,7 @@ public class ScrabbleRackManager {
         return score;
     }
 
-    Comparator<String> compareByScore = new Comparator<String>() {
+    Comparator<String> compareByScore = new Comparator<>() {
         public int compare(String o1, String o2) {
             return getScore(o2) - getScore(o1);
         }

@@ -3,7 +3,7 @@ import java.util.*;
 
 /**
  * Class ScrabbleScorer validates and scores user-given words based on their values
- * in teh game scrabble
+ * in the game scrabble
  * @version 1/18/22
  * @author 23crowley
  */
